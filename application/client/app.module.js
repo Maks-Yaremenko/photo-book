@@ -1,1 +1,7 @@
-console.log(123);
+'use strict'; 
+
+angular.module('photoBook', [
+	'templates',
+	'ui.router',
+	'pages'
+]);

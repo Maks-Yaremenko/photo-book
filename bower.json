@@ -1,0 +1,27 @@
+{
+  "name": "photo-book",
+  "description": "AngularJs example",
+  "main": "assets/index.html",
+  "authors": [
+    "Maks Yaremenko"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "AngularJs",
+    "API",
+    "javascript",
+    "SASS"
+  ],
+  "homepage": "https://github.com/Maks-Yaremenko/photo-book",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.3"
+  }
+}
