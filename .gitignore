@@ -1,0 +1,9 @@
+# ignored folders
+node_modules/*
+assets/*
+
+# excluded folders
+!assets/fonts
+
+# excluded files
+!assets/index.html
