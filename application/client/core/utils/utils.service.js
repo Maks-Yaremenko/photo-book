@@ -16,11 +16,6 @@ angular.module('coreUtils')
         		photo: 'http://jsonplaceholder.typicode.com/photos/{id}'
         	},
 
-            resetData: function () {
-                this.page = 0;
-                this.data = [];
-            },
-
         	generateUrl: function (params) {
         		return params.state === 'home' ? this.urls[params.state] : this.urls[params.state].replace('{id}', params.id);
         	},
@@ -30,12 +25,11 @@ angular.module('coreUtils')
 				var self = this,
 					url = this.generateUrl(params),
            			cachedData = Cache.get(url);
+                    this.page = 0;
 
            		if (cachedData) { 
                     angular.extend([], this.data, cachedData.slice(0, this.segment)); 
                 }
-
-                this.resetData();
 
                 $http.get(url)
                     .then(function(data) {
