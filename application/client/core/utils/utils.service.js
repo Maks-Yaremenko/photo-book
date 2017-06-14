@@ -28,7 +28,7 @@ angular.module('coreUtils')
                     this.page = 0;
 
            		if (cachedData) { 
-                    angular.extend([], this.data, cachedData.slice(0, this.segment)); 
+                    this.data = cachedData.slice(0, this.segment); 
                 }
 
                 $http.get(url)
