@@ -22,7 +22,7 @@ function forgetFile (taskName, filePath) {
 
 const links = {
     modules: ['application/client/**/*.module.js', '!application/client/sass/*'],
-    all: ['application/client/*.config.js', 'application/client/**/*.component.js', '!application/client/sass/*'],
+    all: ['application/client/**/*.js', '!application/client/**/*.module.js', '!application/client/sass/*'],
     tpl: ['application/client/**/*.html']
 }
 
@@ -33,12 +33,11 @@ lazyTask('build', './gulp_tasks/bundle', {
     dst     : 'assets/bundle',
     taskMod : 'modules',
     taskAll : 'otherJs',
-    taskTpl : 'template',
     task    : 'build'
 });
 
 lazyTask('styles', './gulp_tasks/styles', {
-    src: 'application/client/sass/*.sass',
+    src: 'application/client/sass/main.sass',
     dest: 'assets/css'
 });
 
@@ -47,7 +46,7 @@ gulp.task('bundle', gulp.series('build'));
 
 gulp.task('watch', function() {
     gulp.watch('application/client/sass/*.sass', gulp.series('styles'));
-    gulp.watch(links.modules, gulp.series('build'))
+    gulp.watch([links.modules, links.tpl], gulp.series('build'))
         .on('unlink', function(filePath) { forgetFile('modules', filePath); });
     gulp.watch(links.all, gulp.series('build'))
         .on('unlink', function(filePath) { forgetFile('otherJs', filePath); });

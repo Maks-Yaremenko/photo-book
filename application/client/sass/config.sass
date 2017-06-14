@@ -1,0 +1,24 @@
+/* Color pallete */
+$mainColor : #D3DCE3
+$dummyHeight : 40px
+
+/* LITE RESET CSS */
+body 
+	margin: 0
+	padding: 0
+	font-size: 0
+
+a, a:visited, a:hover, a:active
+	text-decoration: none
+	color: inherit
+
+/* GRID VALUES */
+$i: 1
+@while $i <= 12
+  .w#{$i} { width: calc(100%/12*#{$i} - 20px); margin: 10px} $i: $i + 1
+  
+/* OFFSET VALUES */
+$i: 1
+@while $i < 12
+  .offset-#{$i} { width: calc(100%/12*#{$i} - 10px) } $i: $i + 1
+

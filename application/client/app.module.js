@@ -1,7 +1,3 @@
 'use strict'; 
 
-angular.module('photoBook', [
-	'templates',
-	'ui.router',
-	'pages'
-]);
+angular.module('photoBook', ['templates', 'ui.router', 'dummy', 'pages', 'core']);

@@ -5,6 +5,7 @@ const gulp  	 = require('gulp'),
       gulpMerge  = require('gulp-merge'),
       cached 	 = require('gulp-cached'),
       concat 	 = require('gulp-concat'),
+      minifyHTML = require('gulp-minify-html'),
       ngtemplate = require('gulp-ngtemplate'),
       remember   = require('gulp-remember'),
       sourcemaps = require('gulp-sourcemaps');
@@ -19,10 +20,9 @@ module.exports = function(options) {
                 gulp.src(options.all, { since: gulp.lastRun(options.task) })
                 .pipe(cached(options.taskAll))
                 .pipe(remember(options.taskAll)),
-        		gulp.src(options.tpl, { since: gulp.lastRun(options.task) })
-        		.pipe(cached(options.taskTpl))
-        		.pipe(remember(options.taskTpl))
-                .pipe(ngtemplate({ module: 'templates', standalone: true })))
+        		gulp.src(options.tpl)
+                .pipe(minifyHTML({ comments:true, spare:true }))
+                .pipe(ngtemplate({ module: 'templates'})))
             .pipe(sourcemaps.init())
             .pipe(concat('bundle.js'))
             .pipe(sourcemaps.write('.'))

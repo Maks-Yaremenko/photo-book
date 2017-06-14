@@ -1,3 +1,3 @@
 'use strict'; 
 
-angular.module('pages', ['pagesHome']); 
+angular.module('pages', ['pagesHome', 'pagesAlbum']); 

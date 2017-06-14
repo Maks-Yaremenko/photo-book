@@ -8,11 +8,24 @@ angular.module('photoBook').config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('home',{
                 url: '/',
-                template: '<pages.home></pages.home>'
-                })
-            .state('folder',{
-                url: '/folder/:id',
-                template: '<span>Folder review</span>'
+                component: 'pagesHome',
+                resolve: {
+                    fetchData: function ($transition$, utils) {
+                        var state = $transition$.to().name;
+                        utils.fetchData({state: state});
+                    }
+                }
+            })
+            .state('album',{
+                url: '/album/:id',
+                component: 'pagesAlbum',
+                resolve: {
+                    fetchData: function ($transition$, $stateParams, utils) {
+                        var state = $transition$.to().name;
+                        var id = $stateParams.id;
+                        utils.fetchData({state: state, id: id});
+                    }
+                }
             })
             .state('photo',{
                 url: '/photo/:id',

@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('pagesHome')
-	.component('pages.home', {
+	.component('pagesHome', {
 		templateUrl: 'pages/home/home.template.html',
-		controller: function () {
-			console.log(555);
+		controller: function ($state, utils) {
+			this.utils = utils;
+			this.state = $state;
 		}
 	});
