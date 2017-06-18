@@ -1,10 +1,10 @@
 'use strict';
 
-const gulp  	 = require('gulp'),
-      order 	 = require('gulp-order'),
+const gulp  	   = require('gulp'),
+      order 	   = require('gulp-order'),
       gulpMerge  = require('gulp-merge'),
-      cached 	 = require('gulp-cached'),
-      concat 	 = require('gulp-concat'),
+      cached 	   = require('gulp-cached'),
+      concat 	   = require('gulp-concat'),
       minifyHTML = require('gulp-minify-html'),
       ngtemplate = require('gulp-ngtemplate'),
       remember   = require('gulp-remember'),

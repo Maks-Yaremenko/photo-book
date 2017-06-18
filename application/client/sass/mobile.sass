@@ -1,5 +1,9 @@
 /* MOBILE RULES */
 @media (max-width: $mobile)
-		.content__wrapper
-			width: calc(100% - 10px)
-			margin: 5px
+	.content__wrapper
+		width: calc(100% - 10px)
+		margin: 5px
+			
+@media (max-width: $mobile) and (orientation: landscape)
+	.image-page__content img
+		max-width: 80%
