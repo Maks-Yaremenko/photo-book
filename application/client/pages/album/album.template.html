@@ -1,13 +1,8 @@
 <dummy-header></dummy-header>
 
-<div class="main-content" infinity-scroll="$ctrl.utils.pagination($ctrl.state)">
-	<div class="data__wrapper w4" ng-repeat="image in $ctrl.utils.data">
-		<div class="thumbnail">
-			<img ng-src="{{image.thumbnailUrl}}" alt="{{image.tittle}}">
-			<br><span>Album ID: {{image.albumId}}</span>
-			<br><span>Image ID: {{image.id}}</span>
-			<br><span>Title: {{image.title}}</span>
-		</div>
+<div class="content" infinity-scroll="$ctrl.utils.pagination($ctrl.state)">
+	<div class="content__wrapper" ng-repeat="image in $ctrl.utils.data">
+		<dummy-hero image="image"></dummy-hero>
 	</div>
 </div>
 

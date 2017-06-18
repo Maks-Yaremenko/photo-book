@@ -1,0 +1,14 @@
+<div class="hero">
+    <img class="hero__image" ng-src="{{$ctrl.image.thumbnailUrl}}" 
+    	alt="{{$ctrl.image.tittle}}" 
+    	ng-click="$ctrl.utils.toState('image', {id: $ctrl.image.id})">
+    <br><span>Album ID:</span>
+    	<a ui-sref="album({id: $ctrl.image.albumId})">
+    		<i class="fa fa-folder-open-o" aria-hidden="true"></i> {{$ctrl.image.albumId}}
+    	</a>
+    <br><span>Image ID:</span>
+	    <a ui-sref="image({id: $ctrl.image.id})">
+	    	<i class="fa fa-picture-o" aria-hidden="true"></i> {{$ctrl.image.id}}
+	    </a>
+    <br><span>Title: {{$ctrl.image.title}}</span>
+</div>

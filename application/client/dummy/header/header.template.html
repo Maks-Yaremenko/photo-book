@@ -1,4 +1,8 @@
 <div class="header">
-	<a ui-sref="home">Home</a>
-	<a ui-sref="album({id: 22})">Album 22</a>
+	<a ui-sref="home">
+    	<i class="fa fa-home" aria-hidden="true"></i>
+	</a>
+	<span ng-click="$ctrl.utils.openInNewTab('https://www.google.com')">
+		<i class="fa fa-google google_action" aria-hidden="true"></i>
+	</span>
 </div>

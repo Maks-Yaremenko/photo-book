@@ -1,19 +1,56 @@
 /* DESCTOP RULES */
 
-.main-content
-	left: 0
-	right: 0
+.content
 	margin: auto
+	padding: $dummyHeight 0
 	max-width: 960px
 	font-size: 16px
+	text-align: center
 
-.data__wrapper
+.content__wrapper
 	text-align: center
 	display: inline-block
+	width: calc(100%/3 - 20px)
+	margin: 10px
 
-.thumbnail
-	margin: 0 15% 
+.hero
+	margin: 0 15%
 	padding-top: 20px
 	height: 300px
 	overflow: hidden
 	box-shadow: 1px 1px 10px 3px gray
+
+.hero__image 
+	cursor: pointer
+
+.image-page
+	height: 100vh
+	background: $previewBG
+	font-size: 16px
+	text-align: center
+	position: relative
+	overflow: hidden
+
+.image-page__content
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+
+.image-page__content img
+	max-height: 100%
+	max-width: 100%
+
+.image-page__close
+	position: absolute
+	cursor: pointer
+	font-size: 40px
+	top: 30px
+	right: 40px
+
+.image-page__actions
+	position: absolute
+	bottom: 40px
+	left: 40px
+	font-size: 40px
+	letter-spacing: 10px

@@ -10,9 +10,8 @@ angular.module('photoBook').config(['$stateProvider', '$urlRouterProvider',
                 url: '/',
                 component: 'pagesHome',
                 resolve: {
-                    fetchData: function ($transition$, utils) {
-                        var state = $transition$.to().name;
-                        utils.fetchData({state: state});
+                    fetchData: function (utils) {
+                        utils.fetchData({state: 'home'});
                     }
                 }
             })
@@ -20,18 +19,20 @@ angular.module('photoBook').config(['$stateProvider', '$urlRouterProvider',
                 url: '/album/:id',
                 component: 'pagesAlbum',
                 resolve: {
-                    fetchData: function ($transition$, $stateParams, utils) {
-                        var state = $transition$.to().name;
+                    fetchData: function ($stateParams, utils) {
                         var id = $stateParams.id;
-                        utils.fetchData({state: state, id: id});
+                        utils.fetchData({state: 'album', id: id});
                     }
                 }
             })
-            .state('photo',{
-                url: '/photo/:id',
-                template: '<span>Single photo</span>',
-                controller: function ($state) {
-                    console.log($state.params);
+            .state('image',{
+                url: '/image/:id',
+                component: 'pagesImage',
+                resolve: {
+                    fetchData: function ($stateParams, utils) {
+                        var id = $stateParams.id;
+                        utils.fetchImageData({state: 'image', id: id});
+                    }
                 }
             });
 

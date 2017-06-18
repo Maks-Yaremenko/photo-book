@@ -1,10 +1,12 @@
 'use strict'
 
 angular.module('coreUtils')
-    .factory('utils', ['$http', 'Cache', function($http, Cache) {
+    .factory('utils', ['$http', 'Cache', '$state', '$window', function($http, Cache, $state, $window) {
         return {
 
             data: [],
+
+            image: {},
 
             page: 0,
 
@@ -13,7 +15,7 @@ angular.module('coreUtils')
         	urls: {
         		home : 'https://jsonplaceholder.typicode.com/photos',
         		album: 'http://jsonplaceholder.typicode.com/albums/{id}/photos',
-        		photo: 'http://jsonplaceholder.typicode.com/photos/{id}'
+        		image: 'http://jsonplaceholder.typicode.com/photos/{id}'
         	},
 
         	generateUrl: function (params) {
@@ -28,13 +30,30 @@ angular.module('coreUtils')
                     this.page = 0;
 
            		if (cachedData) { 
-                    this.data = cachedData.slice(0, this.segment); 
+                    return this.data = cachedData.slice(0, this.segment);
                 }
 
                 $http.get(url)
                     .then(function(data) {
                     	Cache.put(url, data.data);
-                        self.data = data.data.slice(0, self.segment)
+                        self.data = data.data.slice(0, self.segment);
+                    });
+            },
+
+            fetchImageData: function (params) {
+                var self = this,
+                    url = this.generateUrl(params),
+                    cachedData = Cache.get(url);
+                this.image = {};
+
+                if (cachedData) {
+                    return this.image = cachedData;
+                }
+
+                $http.get(url)
+                    .then(function(data) {
+                        Cache.put(url, data.data);
+                        self.image = data.data;
                     });
             },
 
@@ -50,6 +69,14 @@ angular.module('coreUtils')
                 
                 if (!cachedData) { return false; }
                 this.data = this.data.concat(cachedData.slice(start, end));
+            },
+
+            toState: function (state, params) {
+                $state.go(state, params);
+            },
+
+            openInNewTab: function (link) {
+                $window.open(link, '_blank');
             }
         }
     }]);

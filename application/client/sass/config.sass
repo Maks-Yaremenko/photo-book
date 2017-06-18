@@ -1,6 +1,11 @@
 /* Color pallete */
 $mainColor : #D3DCE3
 $dummyHeight : 40px
+$previewBG: gray
+
+$desctop: 960px 
+$tablet: 780px
+$mobile: 480px
 
 /* LITE RESET CSS */
 body 
@@ -12,13 +17,7 @@ a, a:visited, a:hover, a:active
 	text-decoration: none
 	color: inherit
 
-/* GRID VALUES */
-$i: 1
-@while $i <= 12
-  .w#{$i} { width: calc(100%/12*#{$i} - 20px); margin: 10px} $i: $i + 1
-  
-/* OFFSET VALUES */
-$i: 1
-@while $i < 12
-  .offset-#{$i} { width: calc(100%/12*#{$i} - 10px) } $i: $i + 1
-
+.main-wrapper
+	width: 100%
+	position: relative
+	text-align: center

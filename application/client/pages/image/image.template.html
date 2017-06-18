@@ -1,0 +1,21 @@
+<div class="image-page">
+	<div class="image-page__close">
+		<a ui-sref="home">
+			<i class="fa fa-times" aria-hidden="true"></i>
+		</a>
+	</div>
+	<div class="image-page__content">
+		<img src="{{$ctrl.utils.image.url}}" alt="{{$ctrl.utils.image.title}}">
+		<br><span>Album ID: {{$ctrl.utils.image.albumId}}</span>
+		<br><span>Image ID: {{$ctrl.utils.image.id}}</span>
+		<br><span>Title: {{$ctrl.utils.image.title}}</span>
+	</div>
+	<div class="image-page__actions">
+		<a ui-sref="home">
+    		<i class="fa fa-home" aria-hidden="true"></i>
+    	</a>
+    	<a ui-sref="album({id: $ctrl.utils.image.albumId})">
+    		<i class="fa fa-folder-open-o" aria-hidden="true"></i>
+    	</a>
+	</div>
+</div>
