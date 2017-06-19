@@ -12,6 +12,8 @@ angular.module('coreUtils')
 
         	segment : 9,
 
+            loading: true,
+
         	urls: {
         		home : 'https://jsonplaceholder.typicode.com/photos',
         		album: 'http://jsonplaceholder.typicode.com/albums/{id}/photos',
@@ -28,15 +30,19 @@ angular.module('coreUtils')
 					url = this.generateUrl(params),
            			cachedData = Cache.get(url);
                     this.page = 0;
+                    this.data = [];
+                    this.loading = true;
 
-           		if (cachedData) { 
+           		if (cachedData) {
+                    self.loading = false;
                     return this.data = cachedData.slice(0, this.segment);
                 }
 
                 $http.get(url)
                     .then(function(data) {
-                    	Cache.put(url, data.data);
+                        Cache.put(url, data.data);
                         self.data = data.data.slice(0, self.segment);
+                        self.loading = false;
                     });
             },
 
@@ -45,8 +51,10 @@ angular.module('coreUtils')
                     url = this.generateUrl(params),
                     cachedData = Cache.get(url);
                 this.image = {};
+                this.loading = true;
 
                 if (cachedData) {
+                    self.loading = false;
                     return this.image = cachedData;
                 }
 
@@ -54,6 +62,7 @@ angular.module('coreUtils')
                     .then(function(data) {
                         Cache.put(url, data.data);
                         self.image = data.data;
+                        self.loading = false;
                     });
             },
 
